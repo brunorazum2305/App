@@ -33,7 +33,7 @@
                     echo '<td>' . $analysis['Broj suglasnika'] . '</td>';
                     echo '</tr>';
             
-                    // Save the submitted word to words.json
+                    
                     saveToJSON($word);
                 }
                 header("Location: {$_SERVER['REQUEST_URI']}");
