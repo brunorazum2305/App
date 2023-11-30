@@ -1,5 +1,2 @@
 <?php 
 
-abstract class Car (
-    
-)
