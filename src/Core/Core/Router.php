@@ -8,7 +8,7 @@ class Router
 {
     private static array $routes = [];
 
-    public static function get(string $route, callable $callback)
+    public static function get(string $route, callable|array $callback)
     {
         self::$routes['get'][$route] = $callback;
     }
@@ -24,6 +24,12 @@ class Router
             throw new RouteNotFoundException();
         }
 
-        return $callback();
+        if (!is_array($callback)) {
+            return $callback();
+        }
+
+        $controller = new $callback[0];
+
+        return $controller->{$callback[1]}();
     }
 }
